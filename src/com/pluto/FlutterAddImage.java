@@ -325,15 +325,15 @@ public class FlutterAddImage extends AnAction {
                 if (gen_a == null) {
                     return;
                 }
-                a_file = gen_a.findChild("images_path.dart");
+                a_file = gen_a.findChild("images.dart");
                 if (a_file == null) {
                     PsiFileFactory.getInstance(project);
-                    String s = "class A {\n" +
+                    String s = "class Images {\n" +
                             " //auto gen ,do net edit !!! \n" +
                             "  static const test = 'test';\n" +
 
                             "}";
-                    PsiFile initFile = PsiFileFactory.getInstance(project).createFileFromText("images_path.dart", JavaFileType.INSTANCE, s);
+                    PsiFile initFile = PsiFileFactory.getInstance(project).createFileFromText("images.dart", JavaFileType.INSTANCE, s);
                     PsiManager.getInstance(project).findDirectory(gen_a).add(initFile);
                 } else {
 
@@ -341,7 +341,7 @@ public class FlutterAddImage extends AnAction {
                 }
 
 
-//                                    PsiFile fileFromText = PsiFileFactory.getInstance(project).createFileFromText(Language.ANY, "images_path.dart");
+//                                    PsiFile fileFromText = PsiFileFactory.getInstance(project).createFileFromText(Language.ANY, "images.dart");
 
             }
         });
@@ -351,9 +351,9 @@ public class FlutterAddImage extends AnAction {
 
     //生成A文件的内容
     void gen_AContent() {
-        a_file = gen_a.findChild("images_path.dart");
+        a_file = gen_a.findChild("images.dart");
         StringBuilder sb = new StringBuilder();
-        String s = "class A {\n" +
+        String s = "class Images {\n" +
                 "  //auto gen ,do not edit! \n";
         sb.append(s);
         Iterator<Map.Entry<String, String>> iterator = list.entrySet().iterator();
@@ -387,7 +387,7 @@ public class FlutterAddImage extends AnAction {
                     String path1 = path.substring(path.indexOf("assets"), path.lastIndexOf("."));
 
                     String path2 = path1.replaceAll("/", "_");
-                    list.put(path2, path.substring(path.indexOf("assets")));
+                    list.put(ff.getName().substring(0, ff.getName().indexOf(".")), path.substring(path.indexOf("assets")));
                 }
 
             }
